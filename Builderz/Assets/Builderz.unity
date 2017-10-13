@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 125, y: 0}
+  m_AnchoredPosition: {x: -375, y: 0}
   m_SizeDelta: {x: 124, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &244454955
@@ -408,7 +408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -125}
+  m_AnchoredPosition: {x: 0, y: 625}
   m_SizeDelta: {x: 124, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &386131500
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorMenu: {fileID: 386131499}
-  actionMenu: {fileID: 0}
+  actionMenu: {fileID: 244454954}
 --- !u!4 &393437093
 Transform:
   m_ObjectHideFlags: 0
