@@ -8,12 +8,25 @@ public class Block
     public Transform blockTransform;
 }
 
+public enum BlockColor
+{
+    Red = 0,
+    White = 1,
+    Green = 2,
+    Blue = 3,
+    Black = 4
+
+}
+
 public class GameManager : MonoBehaviour
 {
     private float blockSize = 0.25f;
 
     public Block[,,] blocks = new Block[20, 20, 20];
     public GameObject blockPrefab;
+
+    public BlockColor selectedColor;
+    public Material[] blockMaterials;
 
     private GameObject foundationObject;
     private Vector3 blockOffset;
@@ -22,7 +35,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         foundationObject = GameObject.Find("Foundation");
-        blockOffset = (Vector3.one* 0.5f) / 4; 
+        blockOffset = (Vector3.one* 0.5f) / 4;
+        selectedColor = BlockColor.White;
     }
 
     private void Update()
@@ -41,7 +55,7 @@ public class GameManager : MonoBehaviour
 
                 if(blocks[x,y,z] == null)
                 {
-                    GameObject go = Instantiate(blockPrefab) as GameObject;
+                    GameObject go = CreateBlock();
                     go.transform.localScale = Vector3.one * blockSize;
 
                     PostitionBlock(go.transform, index);
@@ -53,7 +67,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    GameObject go = Instantiate(blockPrefab) as GameObject;
+                    GameObject go = CreateBlock();
                     go.transform.localScale = Vector3.one * blockSize;
 
                     Vector3 newIndex = BlockPosition(hit.point + (hit.normal * blockSize));
@@ -80,9 +94,37 @@ public class GameManager : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
+    private GameObject CreateBlock()
+    {
+        GameObject go = Instantiate(blockPrefab) as GameObject;
+        go.GetComponent<Renderer>().material = blockMaterials[(int)selectedColor];
+        return go;
+    }
+
     private void PostitionBlock(Transform t, Vector3 index)
     {
         t.position = ((index * blockSize) + blockOffset) 
             + (foundationObject.transform.position - foundationCenter);
+    }
+
+    public void ChangeBlockColor(int color)
+    {
+        selectedColor = (BlockColor)color;
+
+
+        /*BlockColor c = (BlockColor)color;
+        switch(c)
+        {
+            case BlockColor.Red: //Red
+                break;
+            case BlockColor.White: //White
+                break;
+            case BlockColor.Green: //Green
+                break;
+            case BlockColor.Blue: //Blue
+                break;
+            case BlockColor.Black: //Black
+                break;
+        }*/
     }
 }
