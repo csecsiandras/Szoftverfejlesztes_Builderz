@@ -6,6 +6,7 @@ using System;
 public class Block
 {
     public Transform blockTransform;
+    public BlockColor color;
 }
 
 public enum BlockColor
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     private GameObject foundationObject;
     private Vector3 blockOffset;
     private Vector3 foundationCenter = new Vector3(1.25f, 0, 1.25f);
+    private bool isDeleting;
 
     private void Start()
     {
@@ -46,23 +48,41 @@ public class GameManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 30.0f)) 
             {
-                
+                if(isDeleting)
+                {
+                    if(hit.transform.name != "Foundation")
+                    {
+                        Vector3 oldCubeIndex = BlockPosition(hit.point - (hit.normal * (blockSize - 0.01f)));
+                        Destroy(blocks[(int)oldCubeIndex.x, (int)oldCubeIndex.y, (int)oldCubeIndex.z].blockTransform.gameObject);
+                        blocks[(int)oldCubeIndex.x, (int)oldCubeIndex.y, (int)oldCubeIndex.z] = null;
+
+                    }
+                    return;
+                }
+
+                //index = where should the new cube spawn
                 Vector3 index = BlockPosition(hit.point);
 
                 int x = (int)index.x
                     , y = (int)index.y
                     , z = (int)index.z;
 
-                if(blocks[x,y,z] == null)
+                Debug.Log(index);
+
+                if (blocks[x,y,z] == null)
                 {
                     GameObject go = CreateBlock();
                     go.transform.localScale = Vector3.one * blockSize;
 
                     PostitionBlock(go.transform, index);
 
+                    //Block position (10*10*no limit)
+                    Debug.Log(x.ToString() + " " + y.ToString() + " " + z.ToString());
+
                     blocks[x, y, z] = new Block
                     {
-                        blockTransform = go.transform
+                        blockTransform = go.transform,
+                        color = selectedColor
                     };
                 }
                 else
@@ -71,6 +91,12 @@ public class GameManager : MonoBehaviour
                     go.transform.localScale = Vector3.one * blockSize;
 
                     Vector3 newIndex = BlockPosition(hit.point + (hit.normal * blockSize));
+
+                    blocks[(int)newIndex.x, (int)newIndex.y, (int)newIndex.z] = new Block
+                    {
+                        blockTransform = go.transform,
+                        color = selectedColor
+                    };
                     PostitionBlock(go.transform, newIndex);
 
                  // Debug.Log("Error: clicking inside of a cube at position " + index.ToString());
@@ -126,5 +152,10 @@ public class GameManager : MonoBehaviour
             case BlockColor.Black: //Black
                 break;
         }*/
+    }
+
+    public void ToggleDelete()
+    {
+        isDeleting = !isDeleting;
     }
 }
