@@ -10,6 +10,8 @@ public class SaveManager : MonoBehaviour
     public Transform saveList;
     public GameObject savePrefab;
 
+    private bool isSaving;
+
 
     public void OnSaveMenuClick()
     {
@@ -20,12 +22,14 @@ public class SaveManager : MonoBehaviour
     {
         saveMenu.SetActive(false);
         confirmMenu.SetActive(true);
+        isSaving = true;
     }
 
     public void OnLoadClick()
     {
         saveMenu.SetActive(false);
         confirmMenu.SetActive(true);
+        isSaving = false;
     }
 
     public void OnCancelClick()
@@ -34,11 +38,28 @@ public class SaveManager : MonoBehaviour
     }
 
     public void OnConfirmOK()
+    {       
+        if(isSaving)
+        {
+            Save();
+        }
+        else
+        {
+            Load();
+        }
+
+        confirmMenu.SetActive(false);
+    }
+
+    public void OnConfirmCancel()
     {
+        confirmMenu.SetActive(false);
+    }
 
+    private void Save()
+    {
         string saveData = "";
-
-        Block[,,] b = GameManager.Instance.blocks;        
+        Block[,,] b = GameManager.Instance.blocks;
 
         for (int i = 0; i < 10; i++)
         {
@@ -47,7 +68,7 @@ public class SaveManager : MonoBehaviour
                 for (int k = 0; k < 10; k++)
                 {
                     Block currentBlock = b[i, j, k];
-                    if(currentBlock == null)
+                    if (currentBlock == null)
                     {
                         continue;
                     }
@@ -59,16 +80,27 @@ public class SaveManager : MonoBehaviour
                 }
             }
         }
-
         PlayerPrefs.SetString("TEST", saveData);
-
-        confirmMenu.SetActive(false);
     }
 
-    public void OnConfirmCancel()
+    private void Load()
     {
-        confirmMenu.SetActive(false);
-    }
+        string save = PlayerPrefs.GetString("TEST");
+        string[] blockData = save.Split('%');
 
+        for (int i = 0; i < blockData.Length - 1; i++)
+        {
+            string[] currentBlock = blockData[i].Split('|');
+            int x = int.Parse(currentBlock[0]);
+            int y = int.Parse(currentBlock[1]);
+            int z = int.Parse(currentBlock[2]);
+
+            int c = int.Parse(currentBlock[3]);  //color
+
+            Block b = new Block() { color = (BlockColor)c };
+
+            GameManager.Instance.CreateBlock(x, y, z, b);
+        }
+    }
 
 }
