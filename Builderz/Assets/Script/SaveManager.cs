@@ -35,6 +35,33 @@ public class SaveManager : MonoBehaviour
 
     public void OnConfirmOK()
     {
+
+        string saveData = "";
+
+        Block[,,] b = GameManager.Instance.blocks;        
+
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int k = 0; k < 10; k++)
+                {
+                    Block currentBlock = b[i, j, k];
+                    if(currentBlock == null)
+                    {
+                        continue;
+                    }
+
+                    saveData += i.ToString() + "|" +
+                                j.ToString() + "|" +
+                                k.ToString() + "|" +
+                                ((int)currentBlock.color).ToString() + "%";
+                }
+            }
+        }
+
+        PlayerPrefs.SetString("TEST", saveData);
+
         confirmMenu.SetActive(false);
     }
 
