@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 6714
+  controlID: 4367
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
-  controlID: 6715
+  controlID: 4368
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 6716
+  controlID: 4369
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -329,7 +329,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -342,18 +342,18 @@ MonoBehaviour:
       y: 17
       width: 555
       height: 462
-    m_Scale: {x: 0.5361406, y: 0.53614074}
-    m_Translation: {x: 277.5, y: 231}
+    m_Scale: {x: 0.43359375, y: 0.43359375}
+    m_Translation: {x: 277.5, y: 231.00002}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -517.5881
-      y: -430.85703
-      width: 1035.1761
-      height: 861.71405
+      x: -640
+      y: -532.7568
+      width: 1280
+      height: 1065.5135
     m_MinimalGUI: 1
   m_defaultScale: 0.43359375
   m_TargetTexture: {fileID: 0}
@@ -390,9 +390,9 @@ MonoBehaviour:
     height: 479
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b42b0000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 6265fcff000ffdffba19fdff2c1efdff822ffdff625bfdfff66ffdff280cfeff6451feffd06bfeffb85cffffd85fffffea60ffffa89bffff60afffff2ab1ffffe4b2ffff36b5ffff06b6ffffa6fbffff00000000282f0000fc3600002e3700006a37000078380000ac3800000e390000323d0000ac460000d8460000e84600001a47000024470000564700000c4b000000550000145500004055000050550000845500008e550000e6550000
+    m_SelectedIDs: 063e0000
+    m_LastClickedID: 15878
+    m_ExpandedIDs: 0e13ffff1e13ffffee26ffff5c79ffff5e79ffff84f3ffff44fbffff00000000442f00006235000096350000f8350000e03d0000403e00008e3e0000f03e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,7 +411,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
-  - MainMenu
+  - BuilderzScene
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -472,9 +472,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.05696008, y: 0.10588278, z: -0.0060383542, w: 0.9927286}
+    m_Target: {x: 0.49434724, y: -0.31819868, z: 0.20078467, w: 0.7836212}
     speed: 2
-    m_Value: {x: -0.05696008, y: -0.10588278, z: 0.006038354, w: -0.99272853}
+    m_Value: {x: -0.49434724, y: 0.3181987, z: -0.20078467, w: -0.78362125}
   m_Size:
     m_Target: 1007.8567
     speed: 2
@@ -554,19 +554,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Menu
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Menu
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\noctis\Documents\myUnityProjects\SZOFTFEJ\Szoftverfejlesztes_Builderz\Builderz
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 35}
-    m_SelectedIDs: b4290000
-    m_LastClickedID: 10676
-    m_ExpandedIDs: 00000000ac2800000c2900008e290000b42900000c2a0000342a00006a2a0000f02a0000062b00000e2b0000b62b0000dc2c00002a2d0000562d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 55}
+    m_SelectedIDs: ba280000
+    m_LastClickedID: 10426
+    m_ExpandedIDs: 00000000ba2800001a2900009a290000c02900001a2a0000422a0000782a0000002b0000162b00001e2b0000c62b0000ee2c00003e2d00006a2d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -594,7 +594,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ac2800000c2900008e290000b42900000c2a0000342a00006a2a0000f02a0000062b00000e2b0000b62b0000dc2c00002a2d0000562d000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000ba2800001a2900009a290000c02900001a2a0000422a0000782a0000002b0000162b00001e2b0000c62b0000ee2c00003e2d00006a2d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
