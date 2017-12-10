@@ -15,15 +15,15 @@ namespace Vuforia
                                                 ITrackableEventHandler
     {
         #region PRIVATE_MEMBER_VARIABLES
- 
+
         private TrackableBehaviour mTrackableBehaviour;
-    
+
         #endregion // PRIVATE_MEMBER_VARIABLES
 
 
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
-    
+
         void Start()
         {
             mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -70,6 +70,7 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+            GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Block");
 
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
@@ -83,6 +84,20 @@ namespace Vuforia
                 component.enabled = true;
             }
 
+            // Enable rendering:
+            foreach (GameObject component in allObjects)
+            {
+                MeshRenderer m = component.GetComponent<MeshRenderer>();
+                m.enabled = true;
+            }
+
+            // Enable colliders:
+            foreach (GameObject component in allObjects)
+            {
+                Collider c = component.GetComponent<Collider>();
+                c.enabled = true;
+            }
+
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
 
@@ -91,6 +106,7 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+            GameObject[] allObjects = GameObject.FindGameObjectsWithTag("Block");
 
             // Disable rendering:
             foreach (Renderer component in rendererComponents)
@@ -102,6 +118,20 @@ namespace Vuforia
             foreach (Collider component in colliderComponents)
             {
                 component.enabled = false;
+            }
+
+            // Disable rendering:
+            foreach (GameObject component in allObjects)
+            {
+                MeshRenderer m = component.GetComponent<MeshRenderer>();
+                m.enabled = false;
+            }
+
+            // Disable colliders:
+            foreach (GameObject component in allObjects)
+            {
+                Collider c = component.GetComponent<Collider>();
+                c.enabled = false;
             }
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
